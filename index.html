@@ -17,8 +17,8 @@
         color: white;
         font-family: Verdana, "Bitstream Vera Sans", sans-serif;
       }
-      footer{}
-        footer p{
+      #footer{}
+        #footer p{
           display: none;
         }
       #q{
@@ -41,11 +41,11 @@
             font-size: 20px;
             padding: 5px 2px;
           }
-        #q header{
+        #q #header{
           margin: 0;
           overflow: auto;
         }
-          #q header h1{
+          #q #header h1{
             float: left;
             font-size: 50px;
             line-height: 50px;
@@ -68,10 +68,10 @@
             -webkit-text-fill-color: transparent;
             -moz-text-fill-color: transparent;
           }
-          #q header h1 span{
+          #q #header h1 span{
             display: none;
           }
-          #q header h2{
+          #q #header h2{
             float: right;
             padding: 5px 8px;
             background: #555;
@@ -135,11 +135,11 @@
     </style>
   </head>
   <body>
-    <section id="q">
-      <header>
+    <div id="q">
+      <div id="header">
         <h1><a href="/">Ask Jud</a><span> - The world's finest virtual tarot</span></h1>
         <h2 class="help">Need Some Help?</h2>
-      </header>
+      </div>
       <br style="clear: both" />
       <div id="main" style="display: none">
         <div id="petitiontext">
@@ -155,7 +155,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
     <div id="terminal"></div>
     <div id="answer" style="display: none">
       <div id="loading">
@@ -175,9 +175,9 @@
       <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
     -->
     </div>
-    <footer>
+    <div id="footer">
       <p>I am Ask Jud, the world's best virtual tarot</p>
       <p>No, I am not Peter Answers, so typing Ask Peter won't help</p>
-    </footer>
+    </div>
   </body>
 </html>
