@@ -116,11 +116,13 @@ $(function(){
       });
 
       $('#main').fadeIn();
+      $('#jud').fadeIn();
       $.cookie('terminalSeen', 'yes');
     });
   } else {
     $('#terminal').css('display', 'none');
     $('#main').fadeIn();
+    $('#jud').fadeIn();
   }
 
   $petitionInput.keydown(function(e){
@@ -199,5 +201,8 @@ $(function(){
           });
         });
     }
+  });
+  $('#answer #new').click(function(){
+
   });
 });
