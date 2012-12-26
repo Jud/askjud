@@ -63,6 +63,23 @@ var freakouts = [
 'RUNNING ANSWER PROGRAM (V3).......'
 ];
 
+var has_answered = [
+  'hrm, I am unable to establish a spiritual uplink.',
+  'That is an interesting question. I am choosing not to answer.',
+  'I like it better when your friend asks the questions.',
+  'I do not like you, and will not answer.',
+  'I am Jud, and I do not answer to you.'
+];
+
+var no_answer = [
+  'Unable to extablish spiritual uplink.',
+  'The connection to AskJud v3 has failed, try again.',
+  'Maybe you could ask me tomorrow?',
+  'Eh, I\'ve decided not to answer.',
+  'Wouldn\'t you like to know.',
+]
+
+
 var answerStatus = false,
     falseNext = false,
     startAnswer = endAnswer = false,
@@ -77,8 +94,25 @@ var resetVariables = function(){
 };
 
 var judAnswers = function(answer){
-  return answer.split('.')[1];
+  var tmpAnswer = '';
+  if(answer.length){
+    tmpAnswer = answer.split('.')[1];
+    $.cookie('has_answered', 'yes');
+  } else {
+    tmpAnswer = intelliAnswer();
+  }
+  return tmpAnswer;
 };
+
+var intelliAnswer = function(){
+  var text;
+  if($.cookie('has_answered') == 'yes'){
+    text = has_answered[Math.floor(Math.random()*has_answered.length)];
+  } else {
+    text = no_answer[Math.floor(Math.random()*no_answer.length)];
+  }
+  return text;
+}
 
 $(function(){
   $('#terminal').typist({
@@ -115,13 +149,17 @@ $(function(){
         $self.empty().css('display', 'none');
       });
 
-      $('#main').fadeIn();
+      $('#main').fadeIn(function(){
+        $('questiontext input').focus();
+      });
       $('#jud').fadeIn();
       $.cookie('terminalSeen', 'yes');
     });
   } else {
     $('#terminal').css('display', 'none');
-    $('#main').fadeIn();
+    $('#main').fadeIn(function(){
+      $('questiontext input').focus();
+    });
     $('#jud').fadeIn();
   }
 
@@ -181,7 +219,7 @@ $(function(){
   });
   $questionInput.keypress(function(e){
     if(e.which == 63){
-      var $answer = $('#answer');
+      var $answer = $('#answer').clone().addClass('clone').appendTo($('body'));
       $answer.fadeIn(function(){
           $('#loading', $answer).fadeOut();
           $answer.animate({
@@ -191,18 +229,21 @@ $(function(){
             width: 600,
             height: 200
           }, 1000).queue(function(){
-            $('#answer #text')
+            $('#text', $answer)
               .css('display', 'none')
-              .text('Jud Answers: "'+judAnswers(answer)+'"')
+              .html('<span>Jud Answers</span>"'+judAnswers(answer)+'"')
               .fadeIn();
 
-            $('#answer #text').css('width', '300');
-            $('#answer #new').fadeIn();
+            $('#text', $answer).css('width', '300');
+            $('#new', $answer).fadeIn();
           });
         });
     }
   });
-  $('#answer #new').click(function(){
-
+  $(document).on('click', ".clone #new", function(){
+    resetVariables();
+    $('.clone').remove();
+    $('input').val('').prop('disabled', false);
+    $('questiontext input').focus();
   });
 });
