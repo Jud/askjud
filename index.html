@@ -1,0 +1,159 @@
+<html>
+  <head>
+    <title>The world's finest virtual tarot &mdash; AskJud</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="js/probability.js"></script>
+    <script src="js/jquery.typist.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/jquery.disableTextSelect.js"></script>
+    <script src="js/jud.js"></script>
+    <style>
+      html *{
+        box-sizing: border-box;
+      }
+      body{
+        background: #222;
+        color: white;
+        font-family: Verdana, "Bitstream Vera Sans", sans-serif;
+      }
+      footer{}
+        footer p{
+          display: none;
+        }
+      section{
+        width: 500px;
+        margin: 200px auto;
+      }
+        section #main>div{}
+          section #main>div>p{
+            font-size: 22px;
+            margin: 0 0 0 0;
+            padding: 0 0 0 0;
+          }
+        section .textborder{
+          border: 1px solid #888;
+          padding: 2px 4px;
+          margin: 0 0 30px 0;
+        }
+          section .textborder input{
+            width: 100%;
+            font-size: 20px;
+            padding: 5px 2px;
+          }
+        section header{
+          margin: 0;
+          overflow: auto;
+        }
+          section header h1{
+            float: left;
+            font-size: 50px;
+            line-height: 50px;
+            font-weight: normal;
+            padding: 0;
+            margin: 0 0 30px;
+
+            background: #efefef; /* Old browsers */
+            background: -moz-linear-gradient(top,  #efefef 0%, #444444 84%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#efefef), color-stop(84%,#444444)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  #efefef 0%,#444444 84%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  #efefef 0%,#444444 84%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  #efefef 0%,#444444 84%); /* IE10+ */
+            background: linear-gradient(to bottom,  #efefef 0%,#444444 84%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#444444',GradientType=0 ); /* IE6-9 */
+
+            /* background clip */
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+            -moz-text-fill-color: transparent;
+          }
+          section header h1 span{
+            display: none;
+          }
+          section header h2{
+            float: right;
+            padding: 5px 8px;
+            background: #555;
+            font-weight: normal;
+            cursor: pointer;
+            margin: 10px 0 0 0;
+            font-size: 18px;
+            opacity: .6;
+          }
+      #terminal{
+        z-index: 9;
+        position: absolute;
+        top: 200px;
+        left: 50%;
+        margin: 0 0 0 -400px;
+        height: 300px;
+        width: 800px;
+        white-space: pre;
+        font-family: "Droid Sans Mono", "Lucida Console", "Andale Mono", "Courier New", "Courier", monospace;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      #answer{
+        position: absolute;
+        z-index: 10;
+        top: 330px;
+        left: 50%;
+        margin: 0 0 0 -50px;
+        padding: 30px;
+        opacity: .9;
+        background: black;
+      }
+        #answer #text{
+          color: white;
+          margin: 0 auto;
+        }
+        #answer #new{
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 20px;
+          cursor: pointer;
+          text-decoration: underline;
+        }
+    </style>
+  </head>
+  <body>
+    <section id="question">
+      <header>
+        <h1><a href="/">Ask Jud</a><span> - The world's finest virtual tarot</span></h1>
+        <h2 class="help">Need Some Help?</h2>
+      </header>
+      <div id="main" style="display: none">
+        <div id="petitiontext">
+          <p>Type Your Petition</p>
+          <div class="textborder">
+            <input id="petition" placeholder="You must enter the petition.">
+          </div>
+        </div>
+        <div id="questiontext">
+          <p>Type Your Question</p>
+          <div class="textborder">
+            <input id="question" placeholder="What can I answer for you?">
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="terminal"></div>
+    <div id="answer" style="display: none">
+      <div id="loading">
+        <img src="images/loading.gif" alt="loading">
+      </div>
+      <div id="new" style="display: none">New Question</div>
+      <div id="text"></div>
+    </div>
+    <footer>
+      <p>I am Ask Jud, the world's best virtual tarot</p>
+      <p>No, I am not Peter Answers, so typing Ask Peter won't help</p>
+    </footer>
+  </body>
+</html>
