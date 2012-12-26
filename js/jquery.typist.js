@@ -118,8 +118,10 @@
           probabilitilized();
         }
       };
-      for (var i = 0; i < text.length; i++) {
-        typeChar(i);
+      if(typeof text.length !== undefined){
+        for (var i = 0; i < text.length; i++) {
+          typeChar(i);
+        }
       }
       return $el;
     },
