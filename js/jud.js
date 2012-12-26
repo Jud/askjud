@@ -116,13 +116,13 @@ $(function(){
       });
 
       $('#main').fadeIn();
-      $('#jud').fadeIn();
+      $('#jud').css('display', 'block').fadeIn();
       $.cookie('terminalSeen', 'yes');
     });
   } else {
     $('#terminal').css('display', 'none');
     $('#main').fadeIn();
-    $('#jud').fadeIn();
+    $('#jud').css('display', 'block').fadeIn();
   }
 
   $petitionInput.keydown(function(e){
