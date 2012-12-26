@@ -118,7 +118,7 @@
           probabilitilized();
         }
       };
-      if(typeof text !== undefined && text.length){
+      if(text && text.length){
         for (var i = 0; i < text.length; i++) {
           typeChar(i);
         }
