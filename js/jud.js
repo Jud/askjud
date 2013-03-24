@@ -98,6 +98,7 @@ var judAnswers = function(answer){
   if(answer.length){
     tmpAnswer = answer.split('.')[1];
     $.cookie('has_answered', 'yes');
+    _gaq.push(['_trackEvent', 'Answers', 'Answered', tmpAnswer]);
   } else {
     tmpAnswer = intelliAnswer();
   }
@@ -107,8 +108,10 @@ var judAnswers = function(answer){
 var intelliAnswer = function(){
   var text;
   if($.cookie('has_answered') == 'yes'){
+    _gaq.push(['_trackEvent', 'Answers', 'Answered Before']);
     text = has_answered[Math.floor(Math.random()*has_answered.length)];
   } else {
+    _gaq.push(['_trackEvent', 'Answers', 'Not Answered Before']);
     text = no_answer[Math.floor(Math.random()*no_answer.length)];
   }
   return text;
