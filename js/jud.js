@@ -93,12 +93,12 @@ var resetVariables = function(){
   answer = '';
 };
 
-var judAnswers = function(answer){
+var judAnswers = function(answer, question){
   var tmpAnswer = '';
   if(answer.length){
     tmpAnswer = answer.split('.')[1];
     $.cookie('has_answered', 'yes');
-    _gaq.push(['_trackEvent', 'Answers', 'Answered', tmpAnswer]);
+    _gaq.push(['_trackEvent', 'Answers', 'Answered', question, tmpAnswer]);
   } else {
     tmpAnswer = intelliAnswer();
   }
@@ -225,6 +225,7 @@ $(function(){
   $questionInput.keypress(function(e){
     if(e.which == 63){
       var $answer = $('#answer').clone().addClass('clone').appendTo($('body'));
+      var question = $('#question').val();
       $answer.fadeIn(function(){
           $('#loading', $answer).fadeOut();
           $answer.animate({
@@ -236,7 +237,7 @@ $(function(){
           }, 1000).queue(function(){
             $('#text', $answer)
               .css('display', 'none')
-              .html('<span>Jud Answers</span>"'+judAnswers(answer)+'"')
+              .html('<span>Jud Answers</span>"'+judAnswers(answer, question)+'"')
               .fadeIn();
 
             $('#text', $answer).css('width', '300');
