@@ -98,7 +98,7 @@ var judAnswers = function(answer, question){
   if(answer.length){
     tmpAnswer = answer.split('.')[1];
     $.cookie('has_answered', 'yes');
-    _gaq.push(['_trackEvent', 'Answers', 'Answered', question, tmpAnswer]);
+    _gaq.push(['_trackEvent', 'Answers', 'Answered', question +'|'+tmpAnswer]);
   } else {
     tmpAnswer = intelliAnswer();
   }
