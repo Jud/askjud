@@ -1,0 +1,211 @@
+<html>
+  <head>
+    <title>The world's finest virtual tarot &mdash; AskJud</title>
+    <script src="js/html5shiv.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="js/probability.js"></script>
+    <script src="js/jquery.typist.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/jquery.disableTextSelect.js"></script>
+    <script src="js/jud.js"></script>
+    <style>
+      html *{
+        box-sizing: border-box;
+      }
+      body{
+        background: #222;
+        color: white;
+        font-family: Verdana, "Bitstream Vera Sans", sans-serif;
+        text-align: center;
+      }
+      #footer{}
+        #footer p{
+          display: none;
+        }
+      #q{
+        text-align: left;
+        width: 500px;
+        margin: 200px auto;
+      }
+        #q #main div{}
+          #q #main div p{
+            font-size: 22px;
+            margin: 0 0 0 0;
+            padding: 0 0 0 0;
+          }
+        #q .textborder{
+          border: 1px solid #888;
+          padding: 2px 4px;
+          margin: 0 0 30px 0;
+        }
+          #q .textborder input{
+            width: 100%;
+            font-size: 20px;
+            padding: 5px 2px;
+          }
+        #q #header{
+          margin: 0;
+          overflow: auto;
+        }
+          #q #header h1{
+            float: left;
+            font-size: 50px;
+            line-height: 50px;
+            font-weight: normal;
+            padding: 0;
+            margin: 0 0 30px;
+
+            background: #efefef; /* Old browsers */
+            background: -moz-linear-gradient(top,  #efefef 0%, #444444 84%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#efefef), color-stop(84%,#444444)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  #efefef 0%,#444444 84%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  #efefef 0%,#444444 84%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  #efefef 0%,#444444 84%); /* IE10+ */
+            background: linear-gradient(to bottom,  #efefef 0%,#444444 84%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#444444',GradientType=0 ); /* IE6-9 */
+
+            /* background clip */
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -moz-text-fill-color: transparent;
+          }
+          #q #header h1 span{
+            display: none;
+          }
+          #q #header h2{
+            float: right;
+            padding: 5px 8px;
+            background: #555;
+            font-weight: normal;
+            cursor: pointer;
+            margin: 10px 0 0 0;
+            font-size: 18px;
+            opacity: .6;
+          }
+      #terminal{
+        text-align: left;
+        z-index: 9;
+        position: absolute;
+        top: 200px;
+        left: 50%;
+        margin: 0 0 0 -400px;
+        height: 300px;
+        width: 800px;
+        white-space: pre;
+        font-family: "Droid Sans Mono", "Lucida Console", "Andale Mono", "Courier New", "Courier", monospace;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      #answer{
+        text-align: center;
+        position: absolute;
+        z-index: 10;
+        top: 330px;
+        left: 50%;
+        margin: 0 0 0 -50px;
+        padding: 30px;
+        opacity: .9;
+        background: black;
+      }
+        #answer #text{
+          color: white;
+          margin: -15px auto;
+          font-size: 18px;
+          text-align: center;
+        }
+        #answer #text span{
+          border-bottom: 1px solid white;
+          margin: 0 0 15px 0;
+          display: block;
+          text-align: center;
+        }
+        #answer #new{
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 20px;
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      #jud{
+        margin: -100px auto;
+        width: 720px;
+      }
+      #twitter{
+        margin: 200px 0 0 0;
+      }
+      #twitter i{
+        filter: grayscale(100%);
+        -webkit-filter: grayscale(100%);
+        -moz-filter: grayscale(100%);
+        -ms-filter: grayscale(100%);
+        -o-filter: grayscale(100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="q">
+      <div id="header">
+        <h1><a href="/">Ask Jud</a><span> - The world's finest virtual tarot</span></h1>
+        <h2 class="help">Need Some Help?</h2>
+      </div>
+      <br style="clear: both" />
+      <div id="main" style="display: none">
+        <div id="petitiontext">
+          <p>Type Your Petition</p>
+          <div class="textborder">
+            <input id="petition" placeholder="You must enter the petition.">
+          </div>
+        </div>
+        <div id="questiontext">
+          <p>Type Your Question</p>
+          <div class="textborder">
+            <input id="question" placeholder="What can I answer for you?">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="terminal"></div>
+    <div id="answer" style="display: none">
+      <div id="loading">
+        <img src="images/loading.gif" alt="loading">
+      </div>
+      <div id="new" style="display: none">New Question</div>
+      <div id="text"></div>
+    </div>
+    <div id="jud" style="display: none">
+      <script type="text/javascript">
+        google_ad_client = "ca-pub-9489973704718659";
+        google_ad_slot = "7706532208";
+        google_ad_width = 728;
+        google_ad_height = 90;
+      </script>
+      <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+    </div>
+    <div id="twitter" style="display: none;">
+      <a href="https://twitter.com/TheAskJud" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @TheAskJud</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+    <div id="footer">
+      <p>I am Ask Jud, the world's best virtual tarot</p>
+      <p>No, I am not Peter Answers, or Ask Peter, so typing Ask Peter won't help</p>
+    </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-288011-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
