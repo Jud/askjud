@@ -155,7 +155,7 @@ $(function(){
       $('#main').fadeIn(function(){
         $('questiontext input').focus();
       });
-      $('#jud, #twitter, .quote, #how-to, .img').fadeIn();
+      $('#jud, #twitter, .quote, #how-to').fadeIn();
       $.cookie('terminalSeen', 'yes');
     });
   } else {
@@ -163,7 +163,7 @@ $(function(){
     $('#main').fadeIn(function(){
       $('questiontext input').focus();
     });
-    $('#jud, #twitter, .quote, #how-to, .img').fadeIn();
+    $('#jud, #twitter, .quote, #how-to').fadeIn();
   }
 
   $petitionInput.keydown(function(e){
