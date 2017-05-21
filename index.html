@@ -2,7 +2,7 @@
   <head>
     <title>The world's finest virtual tarot &mdash; AskJud</title>
     <script src="js/html5shiv.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="js/probability.js"></script>
     <script src="js/jquery.typist.js"></script>
     <script src="js/jquery.cookie.js"></script>
@@ -25,7 +25,7 @@
       #q{
         text-align: left;
         width: 500px;
-        margin: 200px auto;
+        margin: 150px auto;
       }
         #q #main div{}
           #q #main div p{
@@ -83,11 +83,17 @@
             font-size: 18px;
             opacity: .6;
           }
+
+          #q #header .header {
+            overflow: auto;
+            float: left;
+            color: #ccc;
+          }
       #terminal{
         text-align: left;
         z-index: 9;
         position: absolute;
-        top: 200px;
+        top: 150px;
         left: 50%;
         margin: 0 0 0 -400px;
         height: 300px;
@@ -133,7 +139,7 @@
           text-decoration: underline;
         }
       #jud{
-        margin: -100px auto;
+        margin: -130px auto;
         width: 720px;
       }
       #twitter{
@@ -146,6 +152,25 @@
         -ms-filter: grayscale(100%);
         -o-filter: grayscale(100%);
       }
+      .quote {
+        margin-top: 4em;
+        color: #ccc;
+        width: 500px;
+        margin: 4em auto;
+      }
+      #how-to {
+        width: 500px;
+        margin: 8em auto;
+        text-align: left;
+      }
+      #how-to h1, #how-to h2 {
+        font-size: 24px;
+        font-weight: normal;
+      }
+      #how-to p {
+        line-height: 1.5em;
+      }
+
     </style>
   </head>
   <body>
@@ -153,6 +178,9 @@
       <div id="header">
         <h1><a href="/">Ask Jud</a><span> - The world's finest virtual tarot</span></h1>
         <h2 class="help">Need Some Help?</h2>
+        <div class="header">
+          <p>Do you need to ask a question? Are you looking for answers? Jud offers you a space to ask anything you want. However, before each question you must write a petition. If the answer is not what you expected, at least you make catharsis and ask again.</p>
+        </div>
       </div>
       <br style="clear: both" />
       <div id="main" style="display: none">
@@ -179,7 +207,7 @@
       <div id="text"></div>
     </div>
     <div id="jud" style="disp">
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <!-- My Custom Unit -->
       <ins class="adsbygoogle"
           style="display:inline-block;width:728px;height:90px"
@@ -191,8 +219,71 @@
     </div>
     <div id="twitter" style="display: none;">
       <a href="https://twitter.com/TheAskJud" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @TheAskJud</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     </div>
+
+    <div class="quote" style="display: none;">
+      <blockquote>"We are not permitted to choose the frame of our destiny. But what we put into it is ours."</blockquote>
+      <cite>&mdash; Dag Hammarskjöld</cite>
+    </div>
+
+    <div id="how-to" style="display: none;">
+      <h1>How to use AskJud</h1>
+      <h2>The world's best virtual tarot</h2>
+      <p>
+        Jud is a virtual tarot that that can answer all kinds of questions.
+        Questions about the present, the past, and your future. He can be a bit
+        tempermental, requiring that each question be presented with a petition of
+        "Jud, please answer the following question" or "Jud, please answer" before
+        each question is asked. Failure to correctly petition will not bring results.
+      </p>
+
+      <h2 style="margin-top: 3em;">The history of AskJud</h2>
+      <p>
+        Jud was born in 2007. As he began to age, he realized he had an ability to
+        read the fortunes of others, and quickly became a star in his small hometown.
+        To expand his operaion, he knew he had to join the digital age. Through the use
+        of modern technology, he is able to answer thousands of questions every day from
+        people all over the world.
+      </p>
+
+      <p>
+        In early 2016, the demand for Jud's services became so high, he brougt on 10
+        additional team members from around the country to increase answer throughput.
+        With a large team, and his mind in overdrive, he is now able to answer upwards
+        of 13,240 questions per day (Average over the past 30 days), with pinpoint accuracy.
+        Though the team members are new, they are just as tempermental. Requiring a correct
+        petition each and every time.
+      </p>
+
+      <h2 style="margin-top: 3em;">Has Jud ever been seen?</h2>
+      <p>
+        A dark and blury photograph of Jud was captured in early 2010. The developed image
+        is shown below:
+      </p>
+      <div class="img" style="text-align: center; margin-top: 4em;">
+        <img src="images/v.jpg" alt="AskJud -- Finest Virtual Tarot">
+      </div>
+
+      <h2 style="margin-top: 3em;">The Twitter migration of 2015</h2>
+      <p>
+        In early 2015, Jud moved part of his online presence to Twitter, under the handle @TheAskJud.
+        It wasn't before long before the crowds of people following his presence online
+        made the jump to Twitter. His ability to answer many different types of questions,
+        both online and on Twitter attracted many.
+      </p>
+      <p>
+        His Twitter has been inactive for two years due to an oversubscription of requests. Twitter
+        hadn't created the tooling for him to keep up with demand. Though there may come a
+        time for him to return, there are no plans at this time.
+      </p>
+
+      <h2 style="margin-top: 3em;">Questions?</h2>
+      <p>
+        Follow @TheAskJud or ask away above!
+      </p>
+    </div>
+
     <div id="footer">
       <p>I am Ask Jud, the world's best virtual tarot</p>
       <p>No, I am not Peter Answers, or Ask Peter, so typing Ask Peter won't help</p>
